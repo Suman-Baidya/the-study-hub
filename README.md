@@ -13,6 +13,8 @@
 ## YouTube
 - [Chai Aur React](https://www.youtube.com/watch?v=vz1RlUyrc3w&list=PLu71SKxNbfoDqgPchmvIsL4hTnJIrtige)  : Hitese Sir React JS Playlist
 
+## Documentation
+- [Official Doc](https://react.dev/learn) : React Documentation
 
 
 
