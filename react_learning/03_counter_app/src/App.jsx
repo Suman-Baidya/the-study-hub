@@ -9,7 +9,13 @@ function App() {
 
   const addValue = ()=>{
     if(counter<20){
-      setCounter(counter = counter+1)
+      
+      setCounter(prevCounter => prevCounter+1)
+      setCounter(prevCounter => prevCounter+1)
+      setCounter(prevCounter => prevCounter+1)
+      setCounter(prevCounter => prevCounter+1)
+      
+
       setMessage(message = "")
     }else{
       setMessage(message = "Too long value")
