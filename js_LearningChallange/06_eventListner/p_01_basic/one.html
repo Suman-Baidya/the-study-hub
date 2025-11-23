@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #212121; color: white; font-family: Arial, sans-serif;">
+
+    <h1>Amazing Images</h1>
+
+    <div>
+        <ul id="images">
+
+            <li><img src="https://cdn.pixabay.com/photo/2016/04/19/05/07/turntable-1337986_1280.jpg" width="200px" id="pic1" alt="Image One"></li>
+
+            <li><img src="https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_1280.png" width="200px" id="pic2" alt=""></li>
+
+            <li><img src="https://cdn.pixabay.com/photo/2019/04/25/14/43/workplace-4155023_1280.jpg" width="200px" id="pic3" alt=""></li>
+
+            <li><img src="https://cdn.pixabay.com/photo/2018/02/08/10/22/desk-3139127_1280.jpg" width="200px" id="pic4" alt=""></li>
+
+            <li><a style="color: white; text-decoration: none;" href="https://google.com" id="google">Google</a></li>
+
+            
+        </ul>
+    </div>
+
+
+    <script>
+        // type, timestamp, defaultPrevennted
+        // target, toElement, srcElement, currentTarget
+        // clientX, clientY, screenX, screenY
+        // altkey, ctrlkey, shiftkey, keycode
+
+        // document.getElementById("pic2").addEventListener("click", function(e) {
+        //     console.log("clicked pic2");
+        //     e.stopPropagation();
+        // }, false);
+
+        // document.getElementById("images").addEventListener("click", function(e) {
+        //     console.log("clicked images");
+        // }, false);
+
+        // document.getElementById("google").addEventListener("click", function(e) {
+        //     console.log("clicked google link");
+        //     e.preventDefault();
+        // }, false);
+
+
+
+        document.querySelector("#images").addEventListener('click', function(e){
+            console.log(e.target.tagName)
+
+            if (e.target.tagName === "IMG"){
+                let removeIt = e.target.parentNode
+                removeIt.remove()
+                // removeIt.parentNode.removeChild(removeIt)  // old version
+            }
+        })
+
+
+        
+    </script>
+    
+</body>
+</html>
