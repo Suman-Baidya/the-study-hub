@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG Changer</title>
+</head>
+<body>
+    <h1>BackGround Color Changer</h1>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+
+    <h2>Key</h2>
+
+
+    <script>
+        const colors = ["red", "green", "blue", "orange", "yellow", "tomato"]
+        const body = document.querySelector("body")
+        const startBtn = document.querySelector("#start")
+        const stopBtn = document.querySelector("#stop")
+
+        const h2 = document.querySelector("h2")
+
+        window.addEventListener("keydown", function(e){
+            h2.innerText = e.key
+        })
+
+
+        // function bgChanger(color){
+        //     body.style.backgroundColor = color
+        // }        
+
+        // startBtn.addEventListener("click", function(){
+        //     let backgroundColorSet = setInterval(function(){
+        //         let setIndex = Math.floor(Math.random() * colors.length)
+        //         let randomColor = colors[setIndex]
+        //         bgChanger(randomColor)
+
+        //         console.log(setIndex)
+        //     }, 1000)
+
+
+        //     stopBtn.addEventListener("click", function(){
+        //         clearInterval(backgroundColorSet)
+        //     })
+        // })
+
+
+        const randomColor = function(){
+            const hex = "0123456789ABCDEF"
+            let color = "#"
+            for (let i = 0; i < 6; i++){
+                color += hex[Math.floor(Math.random() * 16)]
+            }
+            return color
+        }
+
+        let bgInterval;
+
+        const startChanging = function(){
+            if(!bgInterval) {
+                bgInterval = setInterval(changeBgColor, 1000)
+            }
+
+            function changeBgColor(){
+                body.style.backgroundColor = randomColor()
+            }
+        }
+
+        const stopChanging = function(){
+            clearInterval(bgInterval);
+            bgInterval = null;
+        }
+
+        startBtn.addEventListener("click", startChanging)
+        stopBtn.addEventListener("click", stopChanging)
+
+
+
+    </script>
+</body>
+</html>

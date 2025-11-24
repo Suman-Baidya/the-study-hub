@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body style="background-color: #212121; color: aliceblue; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <h1>API Request</h1>
+
+    <div class="profileCard">
+        <img src="" alt="" id="profileImg" style="width: 50%;border-radius: 50%;">
+        <p>Followers: <span id="followers"></span></p>
+    </div>
+
+
+    <script>
+        const profileImg = document.querySelector("#profileImg")
+        const followers = document.querySelector("#followers")
+
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', requestUrl)
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState);
+            if(xhr.readyState === 4){
+                const data = JSON.parse(this.responseText);
+
+                let profileUrl = data.avatar_url;
+                let followersCount = data.followers
+
+                profileImg.setAttribute("SRC", profileUrl)
+                followers.innerHTML = followersCount
+
+
+                console.log(data)
+                console.log(profileUrl)
+            }
+        }
+
+        
+        xhr.send()
+    </script>
+</body>
+</html>
