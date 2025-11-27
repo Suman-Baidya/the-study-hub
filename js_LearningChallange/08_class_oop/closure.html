@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closure</title>
+</head>
+<body style="background-color: #212121; color: white; font-family: Arial, sans-serif;">
+
+  <button id="orange">Orange</button>
+  <button id="green">Green</button>
+  
+  
+
+  <script>
+
+      // function init() {
+      //   let name = "Mozilla";
+      //   function displayName() {
+      //     console.log(name);
+      //   }
+      //   displayName();
+      // }
+      
+      // init();
+
+
+      // function outer(){
+      //   let username = "suman";
+      //   function inner(){
+      //     console.log(username);
+      //   }
+
+      //   function innerTwo(){
+      //     console.log("Inner two", username)
+      //   }
+
+      //   inner();
+      //   innerTwo()
+
+
+      // }
+
+      // outer()
+      // console.log("too outer", username);
+
+
+      // function makeFunc() {
+      //   const name = "Mozilla";
+      //   function displayName() {
+      //     console.log(name);
+      //   }
+      //   return displayName;
+      // }
+
+      // const myFunc = makeFunc();
+      // myFunc();
+      
+
+  </script>
+
+  <script>
+      // document.querySelector("#orange").addEventListener("click", function(){
+      //   document.body.style.backgroundColor = "orange";
+      // });
+      // document.querySelector("#green").addEventListener("click", function(){
+      //   document.body.style.backgroundColor = "green";
+      // });
+
+      function clickHandler(color){
+        return function(){
+          document.body.style.backgroundColor = color;
+        }
+      }
+
+      document.querySelector("#orange").addEventListener("click", clickHandler("orange"));
+      document.querySelector("#green").addEventListener("click", clickHandler("green"));
+  </script>
+</body>
+</html>
