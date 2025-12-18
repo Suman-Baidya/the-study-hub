@@ -32,7 +32,7 @@ const AdvanceForm = () => {
   return (
     <form onSubmit={handleSubmit} className='flex flex-col items-start gap-2 bg-gray-800 p-5 rounded'>
         <h2 className='text-green-400 font-bold text-xl'>Form with Checkbox, Radio & Select</h2>
-        <div className="flex mt-5 flex gap-2 items-center justify-center">
+        <div className="flex mt-5 gap-2 items-center justify-center">
             <label htmlFor="username">Username: </label>
             <input 
                 type="text" 
@@ -43,7 +43,7 @@ const AdvanceForm = () => {
                 onChange={handleInputValue}
             />
         </div>
-        <div className="flex mt-5 flex gap-2 items-center justify-center">
+        <div className="flex mt-5 gap-2 items-center justify-center">
             <label htmlFor="male">Male </label>
             <input 
                 type="radio" 
@@ -65,7 +65,7 @@ const AdvanceForm = () => {
                 onChange={handleInputValue}
             />
         </div>
-        <div className="flex mt-5 flex gap-2 items-center justify-center">
+        <div className="flex mt-5 gap-2 items-center justify-center">
             <label htmlFor="country">Country: </label>
             <select 
                 name="country" 
@@ -78,7 +78,7 @@ const AdvanceForm = () => {
             </select>
         </div>
 
-        <div className="flex mt-5 flex gap-2 items-center justify-center">
+        <div className="flex mt-5 gap-2 items-center justify-center">
             <input 
                 type="checkbox" 
                 id="terms" 
