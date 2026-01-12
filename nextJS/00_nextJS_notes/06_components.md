@@ -1,4 +1,4 @@
-# Next.js Components – Complete Guide
+# Next.js Components
 
 ## Introduction
 
@@ -285,5 +285,187 @@ Use Client Components for:
 ## Conclusion
 
 Next.js component architecture is designed for **performance-first development**. By mastering Server and Client Components, you can build applications that are faster, more secure, and easier to scale.
+
+---
+
+# Server vs Client Components in Next.js
+
+## Data Fetching Example (Complete Notes)
+
+This document demonstrates the **difference between Server Components and Client Components** in Next.js using **data fetching examples**. Understanding this difference is critical for performance, SEO, and correct architecture in the **App Router**.
+
+---
+
+## Example API Used
+
+We will fetch data from a public API:
+
+```
+https://jsonplaceholder.typicode.com/posts/1
+```
+
+---
+
+## 1. Server Component – Data Fetching on Server
+
+### File Structure
+
+```
+app/server-example/page.tsx
+```
+
+### Code (Server Component)
+
+```tsx
+// app/server-example/page.tsx
+
+export default async function ServerExamplePage() {
+  // Fetching happens on the SERVER
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts/1')
+  const post = await res.json()
+
+  return (
+    <div>
+      <h1>Server Component Example</h1>
+      <p><strong>Title:</strong> {post.title}</p>
+      <p>{post.body}</p>
+    </div>
+  )
+}
+```
+
+### Explanation
+
+* Runs only on the **server**
+* Fetch executes before HTML is sent to browser
+* No JavaScript needed for fetching
+* Best for **SEO and performance**
+
+---
+
+## 2. Client Component – Data Fetching in Browser
+
+### File Structure
+
+```
+app/client-example/page.tsx
+```
+
+### Code (Client Component)
+
+```tsx
+'use client'
+
+import { useEffect, useState } from 'react'
+
+export default function ClientExamplePage() {
+  const [post, setPost] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  // Fetching happens in the BROWSER
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then(res => res.json())
+      .then(data => {
+        setPost(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return <p>Loading...</p>
+
+  return (
+    <div>
+      <h1>Client Component Example</h1>
+      <p><strong>Title:</strong> {post.title}</p>
+      <p>{post.body}</p>
+    </div>
+  )
+}
+```
+
+### Explanation
+
+* Runs in the **browser**
+* Fetch executes after page loads
+* JavaScript bundle is larger
+* Required for **interactive UI**
+
+---
+
+## 3. Key Differences (Server vs Client)
+
+| Feature               | Server Component | Client Component    |
+| --------------------- | ---------------- | ------------------- |
+| Default in App Router | ✅ Yes            | ❌ No                |
+| `'use client'`        | ❌ Not needed     | ✅ Required          |
+| Fetch runs on         | Server           | Browser             |
+| SEO                   | Excellent        | Limited             |
+| JavaScript sent       | Minimal          | More                |
+| React Hooks           | ❌                | ✅                   |
+| Performance           | Faster           | Slower initial load |
+
+---
+
+## 4. Recommended Real-World Pattern
+
+### Server Component (Fetch Data)
+
+```tsx
+import ClientButton from './ClientButton'
+
+export default async function Page() {
+  const data = await fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then(res => res.json())
+
+  return (
+    <div>
+      <h1>{data.title}</h1>
+      <ClientButton />
+    </div>
+  )
+}
+```
+
+### Client Component (Interactivity)
+
+```tsx
+'use client'
+
+export default function ClientButton() {
+  return <button>Click Me</button>
+}
+```
+
+### Why This Pattern is Best
+
+* Data stays on the **server**
+* Interactivity stays on the **client**
+* Smaller JS bundle
+* Better performance
+
+---
+
+## 5. Common Mistakes
+
+❌ Fetching critical data inside Client Components
+❌ Adding `'use client'` unnecessarily
+❌ Using browser APIs in Server Components
+❌ Importing Server Components into Client Components
+
+---
+
+## Key Takeaways
+
+* Server Components are default in Next.js
+* Fetch data on the server whenever possible
+* Use Client Components only for interactivity
+* This separation is core to Next.js App Router
+
+---
+
+## Conclusion
+
+Using Server Components for data fetching and Client Components for interactivity results in **faster, more secure, and SEO-friendly** applications. Mastering this pattern is essential for building modern Next.js apps.
 
 ---
