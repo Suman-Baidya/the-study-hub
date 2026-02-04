@@ -1,5 +1,8 @@
 # TypeScript Full Introduction Notes
 
+[TypeScript GitHub Repo](https://github.com/microsoft/TypeScript)
+
+
 ## 📘 Introduction to TypeScript
 
 TypeScript is a **superset of JavaScript** developed by Microsoft. It adds **static typing**, **interfaces**, **classes**, **enums**, and many other powerful features on top of JavaScript.
