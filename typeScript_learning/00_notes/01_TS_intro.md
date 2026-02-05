@@ -1,6 +1,7 @@
 # TypeScript Full Introduction Notes
 
 [TypeScript GitHub Repo](https://github.com/microsoft/TypeScript)
+[TS_PlayGround](https://www.typescriptlang.org/play/)
 
 
 ## 📘 Introduction to TypeScript
