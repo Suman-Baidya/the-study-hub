@@ -21,3 +21,8 @@ for(let order of orders){
 currentOrder = 42
 
 console.log(currentOrder)
+
+
+// ** use unknown instead of any, because it forces us to do type checking before using the variable.
+let userInput: unknown;
+let userName: string;
